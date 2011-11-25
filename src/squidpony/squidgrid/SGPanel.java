@@ -1,4 +1,4 @@
-package squidgrid;
+package squidpony.squidgrid;
 
 import java.awt.*;
 import java.awt.image.*;
@@ -11,10 +11,10 @@ import javax.swing.JPanel;
  *
  * @author Eben
  */
-public class MonospacedPanel extends JPanel implements MonospacedDisplay {
+public class SGPanel extends JPanel implements SGDisplay {
 
     //the array of the contents of the screen
-    private MultiCharDataBlock contents[][];
+    private MultiCharSGBlock contents[][];
     private int rows, columns, reduction = 0;
     private Dimension cellDimension, panelDimension;
     private BufferedImage image = new BufferedImage(20, 20, BufferedImage.TYPE_4BYTE_ABGR);
@@ -30,12 +30,12 @@ public class MonospacedPanel extends JPanel implements MonospacedDisplay {
      * @param columns Number of cells vertically.
      * @param font Base
      */
-    public MonospacedPanel(int width, int height, int rows, int columns, Font font) {
+    public SGPanel(int width, int height, int rows, int columns, Font font) {
         super();
         initDisplay(width, height, rows, columns, font);
     }
 
-    public MonospacedPanel(int rows, int columns, Font font) {
+    public SGPanel(int rows, int columns, Font font) {
         super();
         initDisplayByCell(rows, columns, font);
     }
@@ -99,7 +99,7 @@ public class MonospacedPanel extends JPanel implements MonospacedDisplay {
 
     public void setBlock(int x, int y, char c, Color fore, Color back) {
         Graphics2D g2 = image.createGraphics();
-        contents[x][y] = new MultiCharDataBlock(buildImage(c, fore, back));
+        contents[x][y] = new MultiCharSGBlock(buildImage(c, fore, back));
         g2.drawImage(contents[x][y].getNextImage(), x * cellDimension.width, y * cellDimension.height, null);
     }
 
@@ -122,7 +122,7 @@ public class MonospacedPanel extends JPanel implements MonospacedDisplay {
         setSize(panelDimension);
         setMinimumSize(panelDimension);
         setPreferredSize(panelDimension);
-        contents = new MultiCharDataBlock[rows][columns];
+        contents = new MultiCharSGBlock[rows][columns];
         image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
         Graphics2D g2 = image.createGraphics();
         g2.setColor(Color.WHITE);
@@ -185,7 +185,7 @@ public class MonospacedPanel extends JPanel implements MonospacedDisplay {
         setSize(panelDimension);
         setMinimumSize(panelDimension);
         setPreferredSize(panelDimension);
-        contents = new MultiCharDataBlock[rows][columns];
+        contents = new MultiCharSGBlock[rows][columns];
         image = new BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics2D g2 = image.createGraphics();
         g2.setColor(Color.ORANGE);

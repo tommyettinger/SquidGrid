@@ -1,4 +1,4 @@
-package squidgrid;
+package squidpony.squidgrid;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -13,7 +13,7 @@ import java.awt.Font;
  *
  * @author Eben
  */
-public interface MonospacedDisplay{
+public interface SGDisplay{
 
     /**Initializes the component with the supplied values. The pixels sizes will be adjusted slightly
      * to allow all of the characters to take up the same amount of space. Once this has been called,

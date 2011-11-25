@@ -1,4 +1,4 @@
-package squidgrid;
+package squidpony.squidgrid;
 
 import java.awt.image.BufferedImage;
 
@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  *
  * @author Eben
  */
-public interface DisplayBlock {
+public interface SGBlock {
 
     public BufferedImage getNextImage();
 

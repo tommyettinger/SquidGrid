@@ -1,21 +1,22 @@
-package squidgrid;
+package squidpony.squidgrid;
 
+import squidpony.squidgrid.SGBlock;
 import java.awt.image.BufferedImage;
 
 /**Contains the data within a cell.
  *
  * @author Eben
  */
-public class MultiCharDataBlock implements DisplayBlock {
+public class MultiCharSGBlock implements SGBlock {
 
     private BufferedImage data[];//stored as an array so that multiple tiles can be in each block
     private int index = 0;//currently displayed image
 
-    public MultiCharDataBlock(BufferedImage image){
+    public MultiCharSGBlock(BufferedImage image){
         this(new BufferedImage[]{image});
     }
 
-    public MultiCharDataBlock(BufferedImage image[]){
+    public MultiCharSGBlock(BufferedImage image[]){
         data = image;
     }
 
